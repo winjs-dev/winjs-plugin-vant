@@ -11,7 +11,8 @@
     "preview": "win preview"
   },
   "dependencies": {
-    "@winner-fed/winjs": "*"
+    "@winner-fed/winjs": "*",
+    "vant": "^4.9.21"
   },
   "devDependencies": {
     "typescript": "^5.0.3"

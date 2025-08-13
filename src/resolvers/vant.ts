@@ -1,8 +1,8 @@
 /**
  * vant
  * @Author: liwb (lwbhtml@163.com)
- * @Date: 2024-05-13 09:44
- * @LastEditTime: 2024-05-13 09:44
+ * @Date: 2024-08-13 09:44
+ * @LastEditTime: 2024-08-13 09:44
  * @Description: vant Vue2 的 resolver
  */
 
@@ -29,8 +29,14 @@ function checkIfElementsExist(legacyFunction: Array<string> = []) {
   return sideEffects;
 }
 
-function getSideEffects(dirName: string, moduleType: string, legacyFunction: Array<string>) {
-  const sideEffects: Array<string> = [`vant/${moduleType}/${dirName}/style/index`];
+function getSideEffects(
+  dirName: string,
+  moduleType: string,
+  legacyFunction: Array<string>,
+) {
+  const sideEffects: Array<string> = [
+    `vant/${moduleType}/${dirName}/style/index`,
+  ];
   const vanFunctions = checkIfElementsExist(legacyFunction);
   vanFunctions.forEach((dirName) => {
     sideEffects.push(`vant/${moduleType}/${kebabCase(dirName)}/style/index`);
@@ -46,7 +52,12 @@ export function VantVue2Resolver(legacyFunction: [] = []) {
     resolve: (componentName: string) => {
       // 通过 runtime 引入的组件不需要自动引入样式，改为全局引入了
       // 在生成的 components.d.ts 里不会出现这几个组件
-      if (componentName === 'VanToast' || componentName === 'VanDialog' || componentName === 'VanNotify' || componentName === 'VanImagePreview') {
+      if (
+        componentName === 'VanToast' ||
+        componentName === 'VanDialog' ||
+        componentName === 'VanNotify' ||
+        componentName === 'VanImagePreview'
+      ) {
         return;
       }
       // where `componentName` is always CapitalCase
@@ -55,10 +66,10 @@ export function VantVue2Resolver(legacyFunction: [] = []) {
         const vanName = kebabCase(partialName);
         return {
           from: `vant/${moduleType}/${vanName}`,
-          sideEffects: getSideEffects(vanName, moduleType, legacyFunction)
+          sideEffects: getSideEffects(vanName, moduleType, legacyFunction),
         };
       }
-    }
+    },
   };
 }
 
@@ -73,7 +84,7 @@ export function VantVue2Imports(legacyFunction: Array<string> = []) {
   });
   if (sideEffects.length) {
     return {
-      'vant/es': sideEffects
+      'vant/es': sideEffects,
     };
   }
   return {};

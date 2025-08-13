@@ -1,5 +1,5 @@
 {
-  "name": "winjs-plugin-template",
+  "name": "@winner-fed/plugin-vant",
   "keywords": [
     "winjs",
     "plugin",
@@ -11,10 +11,10 @@
     "typescript",
     "biome"
   ],
-  "version": "0.0.0",
+  "version": "1.0.2",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/winjs-dev/winjs-plugin-template.git"
+    "url": "git+https://github.com/winjs-dev/winjs-plugin-vant.git"
   },
   "license": "MIT",
   "type": "module",
@@ -43,6 +43,9 @@
   "simple-git-hooks": {
     "pre-commit": "npm run lint:write"
   },
+  "dependencies": {
+    "@vant/auto-import-resolver": "^1.3.0"
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.1.1",
     "@playwright/test": "^1.53.2",
@@ -58,7 +61,8 @@
     "@winner-fed/winjs": "*"
   },
   "peerDependencies": {
-    "@winner-fed/utils": "*"
+    "@winner-fed/utils": "*",
+    "vant": ">=2.12 || >=4.6"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {
