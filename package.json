@@ -1,15 +1,23 @@
 {
   "name": "@winner-fed/plugin-vant",
+  "description": "A Vant plugin adapted for WinJS, which supports automatic on-demand import of the Vant component library for both Vue 2 and Vue 3.",
   "keywords": [
     "winjs",
     "plugin",
-    "template",
+    "vant",
+    "vue",
+    "vue2",
+    "vue3",
+    "auto-import",
+    "on-demand",
+    "ui",
+    "components",
+    "resolver",
     "winner-fed",
     "winjs-dev",
     "rslib",
     "rsbuild",
-    "typescript",
-    "biome"
+    "typescript"
   ],
   "version": "1.0.2",
   "repository": {
