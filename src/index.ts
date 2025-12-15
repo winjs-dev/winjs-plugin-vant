@@ -30,7 +30,7 @@ export default (api: IApi) => {
         cwd: api.cwd,
         dep: 'vant',
       }) || dirname(require.resolve('vant/package.json'));
-  } catch (e) {
+  } catch (_e) {
     throw new Error(`Can't find vant package. Please install antd first.`);
   }
 
