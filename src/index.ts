@@ -8,7 +8,14 @@ import {
   VantVue2Resolver,
 } from './resolvers/vant.js';
 
-function resolveProjectDep(opts: { pkg: any; cwd: string; dep: string }) {
+function resolveProjectDep(opts: {
+  pkg: {
+    dependencies?: Record<string, string>;
+    devDependencies?: Record<string, string>;
+  };
+  cwd: string;
+  dep: string;
+}) {
   if (
     opts.pkg.dependencies?.[opts.dep] ||
     opts.pkg.devDependencies?.[opts.dep]
@@ -96,8 +103,7 @@ export default (api: IApi) => {
       if (components.length) {
         vueUseComponents = 'Vue';
 
-        componentsContent =
-          `import { ` + components.join(',') + ` } from 'vant';`;
+        componentsContent = `import { ${components.join(',')} } from 'vant';`;
 
         components.forEach((comp: string) => {
           componentsStyleContent += `import 'vant/es/${kebabCase(comp)}/style/index';\n`;
